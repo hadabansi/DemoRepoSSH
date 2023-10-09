@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div class="mywidget">
+      <button id="increment">+</button>
+      <input type="text" id="inputval" value="1" />
+      <button id="decrement">-</button>
+    </div>
+    <button id="final">clickMe</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script> -->
+
+   
+    <script>
+       $("#increment").on("click", function (){
+        // console.log("hello");
+        var ans=document.getElementById("inputval").value;
+        // console.log(ans);
+        ans++;
+        document.getElementById("inputval").value=ans;
+
+       });
+       $("#decrement").on("click", function (){
+        // console.log("hello");
+        var ans=document.getElementById("inputval").value;
+        // console.log(ans);
+        if(ans>0){
+        ans--;
+        }
+        document.getElementById("inputval").value=ans;
+
+       });
+       $("#final").on("click", function () {
+        var ans = document.getElementById("inputval").value;
+
+        
+        $.ajax({
+            type: "POST", 
+            url: "newo.php",
+            data: { ans: ans }, 
+            success: function (response) {
+               console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+      </script>
+</html>
